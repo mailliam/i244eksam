@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Eksam</title>
+        <link rel="stylesheet" type="text/css" href="stiil.css">
+    </head>
+    <body>
+        <p>Mina olen veebilehekülg</p>
+        <p>
+            <?php if(!empty($_COOKIE['kylastus'])) {
+                echo $_COOKIE['kylastus'];
+            };
+            ?>
+            Külastasid lehte viimati:
+
+            <?php print_r(getLastVisit()); ?>
+        </p>
+        <script src="leht.js"></script>
+    </body>
+</html>
