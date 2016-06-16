@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Märkmik</title>
+        <link rel="stylesheet" type="text/css" href="eksam2.css">
+    </head>
+    <body>
+        <form id="poest" method="POST" action="<?= $_SERVER['PHP_SELF'];?>">
+            <input type="hidden" name="action" value="add">
+            <table>
+                <tr>
+                    <th>Poest on vaja tuua:</th>
+                    <td><input type="text" id="ese" name="ese" placeholder="Mida vaja"></td>
+                </tr>
+                <tr>
+                    <td><button id="save" name="save" type="submit" onclick="check()">Lisa ost</button></td>
+                </tr>
+            </table>
+        </form>
+
+        <h1>Vajad sellist kraami:</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nimetus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach(show() as $row): ?>
+                    <tr>
+                        <td>
+                            <?= htmlspecialchars($row['ese']);?>
+                        </td>
+                        <td>
+                            <form method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">
+                                <input type="hidden" name="action" value="delete">
+                                <button type="submit" name="id" value="<?= $row['id']; ?>">Kustuta nimekirjast</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <script src="eksam2.js"></script>
+
+    </body>
+</html>
